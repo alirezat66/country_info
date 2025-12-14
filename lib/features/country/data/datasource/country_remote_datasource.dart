@@ -28,7 +28,10 @@ class CountryRemoteDataSourceImpl
   @override
   Future<CountryModel> getCountryDetails(String code) async {
     return await safeQuery(
-      call: client.query(query: ConstQueries.getCountryDetailsQuery(code)),
+      call: client.query(
+        query: ConstQueries.getCountryDetailsQuery,
+        variables: {'code': code},
+      ),
       requiredKeys: ['country'],
       mapper: (data) =>
           CountryModel.fromJson(data['country'] as Map<String, dynamic>),

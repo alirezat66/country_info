@@ -57,7 +57,9 @@ class DetailScreen extends ConsumerWidget {
         loading: () => const LoadingView(),
         error: (error, stackTrace) => ErrorView(
           errorMessage: error.toString(),
-          onRetry: () => ref.invalidate(countryDetailsProvider(countryCode)),
+          onRetry: () {
+            ref.invalidate(countryDetailsProvider(countryCode));
+          },
         ),
       ),
     );

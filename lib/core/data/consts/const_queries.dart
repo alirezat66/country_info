@@ -8,8 +8,7 @@ class ConstQueries {
       }
     }
   ''';
-
-  static String getCountryDetailsQuery(String code) => '''
+  static const String getCountryDetailsQuery = '''
     query GetCountryDetails(\$code: ID!) {
       country(code: \$code) {
         code

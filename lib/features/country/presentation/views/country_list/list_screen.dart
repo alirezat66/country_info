@@ -5,6 +5,7 @@ import 'package:country_info/features/country/presentation/providers/country_pro
 import 'package:country_info/features/country/presentation/views/country_list/views/loaded_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ListScreen extends ConsumerWidget {
   const ListScreen({super.key});
@@ -18,8 +19,8 @@ class ListScreen extends ConsumerWidget {
         data: (countries) {
           return CountryLoadedView(
             countries: countries,
-            onCountrySelected: (code, name) => (),
-            //todo go to detail screen
+            onCountrySelected: (code, name) =>
+                context.push('/countries/$code', extra: name),
           );
         },
         loading: () => const LoadingView(),
