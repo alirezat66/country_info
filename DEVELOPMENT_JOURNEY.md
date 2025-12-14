@@ -173,3 +173,7 @@ let start test development for new page and widgets in next step and merge it wi
 
 
 I implemented all tests includes patrol integration tests and widget tests.
+
+**⏱️ Integration Test Time:** `~87 Minutes` 
+
+
