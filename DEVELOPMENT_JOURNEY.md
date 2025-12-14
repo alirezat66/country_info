@@ -120,5 +120,9 @@ So I created two class first as extension on QueryResult and second as a Mixin s
 
   then next step would be implement ui part, but so lets go implement ui.
 
-  
+
+In this step I added screen/views/widgets as you can see I implemented view part in Atomic design pattern principals. The named of list_screen comes from document and I can't change it based on document. I also don't implemented theme yet, I will that in separated step if I had time. 
+
+**⏱️ Test Time:** `~38 Minutes`
+
 
