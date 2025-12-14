@@ -110,3 +110,4 @@ I would implement and if I found some critical point then I add and noted it her
 Lets go.
 
 
+I started 
