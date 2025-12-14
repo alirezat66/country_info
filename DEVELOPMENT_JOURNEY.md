@@ -139,3 +139,34 @@ In detail page we should see first a part of data and with a expand button we sh
 
 lets go to implement it.
 
+I implement all necessary details, Here we have two issue, first using HeroText, why I used it? cause when we use hero, flutter bring text from page 1 to an overlay then past it in page second, during this overlay we don't have access to Material, so this text missed the theme and font, so you would see a red text. it is the reason we have to use Hero text. 
+the second issue that we have is reloading the generated basic items, when we press show more button, lets take a look to our debug print: 
+
+```text
+flutter: label: Flag, value: 🇦🇬
+flutter: label: Name, value: Antigua and Barbuda
+flutter: label: Code, value: AG
+flutter: label: Capital, value: Saint John's
+```
+
+this shows when we just opened a detail page
+
+```text
+flutter: label: Flag, value: 🇦🇬
+flutter: label: Name, value: Antigua and Barbuda
+flutter: label: Code, value: AG
+flutter: label: Capital, value: Saint John's
+flutter: label: Flag, value: 🇦🇬
+flutter: label: Name, value: Antigua and Barbuda
+flutter: label: Code, value: AG
+flutter: label: Capital, value: Saint John's
+flutter: label: Currency, value: XCD
+flutter: label: Phone, value: 1268
+flutter: label: Continent Code, value: NA
+flutter: label: Continent Name, value: North America
+flutter: label: Languages, value: English
+```
+
+as you can see the first three items rebuild again, you can't stop rebuild even using keys. but it is over engineering here. I will do it in step 4 as extra, but the task is finished here.
+
+let start test development for new page and widgets in next step and merge it with main, then go through complete technical readme and finally go to step 4 (let name it best practice or advanced )
