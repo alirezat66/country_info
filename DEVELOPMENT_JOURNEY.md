@@ -58,4 +58,28 @@ So for this project, Clean Arch it was — and not the over-engineered kind. Jus
 
 
 **⏱️ Time Spent For adding packages:** `1 Minutes`
+**⏱️ Time Spent For Core:** `~27 Minutes`
 
+what I did in this part: 
+ I implemented basic classes:  
+ in **data layer** I added `const_values`, `app_exception` and also I implemented `graphql_api_client` as abstract layout and also `graphql_error`as well as `graphql_query_result`. but why? 
+ the response is so easy:  Not only our data layer is responsible for working with data, but also it should be expandable against technology. If we directly start to implement graphql, then our application is depend on just a technology could be deprecated in future. 
+then I implemented client in `graphql_api_client_impl` and I also implement an extension `query_result_mapper` that convert queryResult to GraphqlQueryResult.
+ **domain layer**
+
+in domain I implemented `failure`, `result` and `usecase`. 
+
+ **failure vs exception**
+
+ Exception is include unnecessary info for ui layer, so we don't need return such huge thing to ui, so failure somehow play entity rule for exception. 
+ 
+  **Result vs Either**
+I know many of clean implementations using Either, but I prefer result because these four reasons:
+1- Either is less readable since you should always remember left was wrong and right is correct.
+2- it is additional package by the way
+3- using fold helps you to could not skip or ignore error handling
+4- less learning curve.
+
+**General Usecase**
+
+I have it because we want use command design pattern, and force usecases to use same method (call) entire of app.
