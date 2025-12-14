@@ -1,4 +1,4 @@
-package app.neibi.mobile; // replace "com.example.myapp" with your app's package
+package com.example.countryInfo;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import pl.leancode.patrol.PatrolJUnitRunner;
+import com.example.countryInfo.MainActivity;
 
 @RunWith(Parameterized.class)
 public class MainActivityTest {

@@ -34,3 +34,15 @@ dev_dependencies:
   patrol_cli: ^4.0.1
 flutter:
   uses-material-design: true
+
+
+patrol:
+  app_name: Country Info Test
+  test_directory: integration_test  # Use custom directory
+
+  android:
+    package_name: com.example.countryInfo
+  ios:
+    bundle_id: com.example.countryInfo
+  macos:
+    bundle_id: com.example.countryInfo

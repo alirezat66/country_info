@@ -1,4 +1,4 @@
-package com.example.country_info
+package com.example.countryInfo
 
 import io.flutter.embedding.android.FlutterActivity
 
