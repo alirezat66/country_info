@@ -126,3 +126,7 @@ In this step I added screen/views/widgets as you can see I implemented view part
 **⏱️ Test Time:** `~38 Minutes`
 
 
+I used ai for generating some tests and also review them to be sure all aspects checked. 
+
+
+
