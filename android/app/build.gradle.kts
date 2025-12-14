@@ -28,6 +28,9 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+                multiDexEnabled = true
+testInstrumentationRunner = "pl.leancode.patrol.PatrolJUnitRunner"
+testInstrumentationRunnerArguments["clearPackageData"] = "true"
     }
 
     buildTypes {
@@ -36,9 +39,19 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
+         debug {
+    isMinifyEnabled = false
+    isShrinkResources = false
+}
+    }
+    testOptions {
+        execution = "ANDROIDX_TEST_ORCHESTRATOR"
+    }
     }
 }
 
 flutter {
     source = "../.."
 }
+dependencies {
+androidTestUtil("androidx.test:orchestrator:1.4.2")}

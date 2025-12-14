@@ -12,8 +12,6 @@ void main() {
         const Country(code: 'CA', name: 'Canada', emoji: '🇨🇦'),
         const Country(code: 'GB', name: 'United Kingdom', emoji: '🇬🇧'),
       ];
-      String? selectedCode;
-      String? selectedName;
 
       // act
       await tester.pumpWidget(
@@ -21,10 +19,7 @@ void main() {
           home: Scaffold(
             body: CountryListView(
               countries: countries,
-              onCountrySelected: (code, name) {
-                selectedCode = code;
-                selectedName = name;
-              },
+              onCountrySelected: (code, name) {},
             ),
           ),
         ),
@@ -39,8 +34,9 @@ void main() {
       expect(find.text('🇬🇧'), findsOneWidget);
     });
 
-    testWidgets('should call onCountrySelected when country is tapped',
-        (tester) async {
+    testWidgets('should call onCountrySelected when country is tapped', (
+      tester,
+    ) async {
       // arrange
       final countries = [
         const Country(code: 'FR', name: 'France', emoji: '🇫🇷'),
@@ -93,11 +89,8 @@ void main() {
       // arrange
       final countries = List.generate(
         5,
-        (index) => Country(
-          code: 'C$index',
-          name: 'Country $index',
-          emoji: '🏳️',
-        ),
+        (index) =>
+            Country(code: 'C$index', name: 'Country $index', emoji: '🏳️'),
       );
 
       await tester.pumpWidget(
@@ -116,4 +109,3 @@ void main() {
     });
   });
 }
-

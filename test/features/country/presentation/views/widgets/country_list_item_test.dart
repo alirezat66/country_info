@@ -6,7 +6,6 @@ void main() {
   group('CountryListItem', () {
     testWidgets('should display flag, name, and chevron icon', (tester) async {
       // arrange
-      bool tapped = false;
 
       // act
       await tester.pumpWidget(
@@ -16,7 +15,7 @@ void main() {
               flag: '🇺🇸',
               name: 'United States',
               countryCode: 'US',
-              onTap: () => tapped = true,
+              onTap: () {},
             ),
           ),
         ),
@@ -53,8 +52,9 @@ void main() {
       expect(tapped, true);
     });
 
-    testWidgets('should display different country information correctly',
-        (tester) async {
+    testWidgets('should display different country information correctly', (
+      tester,
+    ) async {
       // arrange & act
       await tester.pumpWidget(
         MaterialApp(
@@ -96,4 +96,3 @@ void main() {
     });
   });
 }
-
