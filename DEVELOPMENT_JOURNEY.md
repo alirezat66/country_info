@@ -69,17 +69,33 @@ then I implemented client in `graphql_api_client_impl` and I also implement an e
 
 in domain I implemented `failure`, `result` and `usecase`. 
 
- **failure vs exception**
+ - **failure vs exception**
 
- Exception is include unnecessary info for ui layer, so we don't need return such huge thing to ui, so failure somehow play entity rule for exception. 
+    Exception is include unnecessary info for ui layer, so we don't need return such huge thing to ui, so failure somehow play entity rule for exception. 
  
-  **Result vs Either**
-I know many of clean implementations using Either, but I prefer result because these four reasons:
-1- Either is less readable since you should always remember left was wrong and right is correct.
-2- it is additional package by the way
-3- using fold helps you to could not skip or ignore error handling
-4- less learning curve.
+  - **Result vs Either**
+    I know many of clean implementations using Either, but I prefer result because these four reasons:
+    - Either is less readable since you should always remember left was wrong and right is correct.
+    - it is additional package by the way
+    - using fold helps you to could not skip or ignore error handling
+    - less learning curve.
 
-**General Usecase**
+- **General Usecase**
 
-I have it because we want use command design pattern, and force usecases to use same method (call) entire of app.
+    I have it because we want use command design pattern, and force usecases to use same method (call) entire of app.
+
+**presenter layer**
+as you can see here I put providers (shared providers).
+
+
+#### why I put providers in presenter
+
+If you check many of github codes many of them used these approaches:
+- ❌ put providers in class
+  - it is wrong because we have to looking inside classes to find which one have provider
+- ❌ put provider outside of class in same root
+    - in this case, if we want change state management we should change all layouts and it is against of clean architecture while riverpod and provider are related to presentation layer   
+- ❌ Put all provider in same place:
+   - it make code out of structure
+- ✅ I put providers in presentation as it should be
+
