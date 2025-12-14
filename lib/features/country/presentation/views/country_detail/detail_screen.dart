@@ -4,7 +4,7 @@ import 'package:country_info/core/presentation/widgets/hero_text.dart';
 import 'package:country_info/features/country/domain/entities/country_mapper_ext.dart';
 import 'package:country_info/features/country/presentation/providers/country_providers.dart';
 import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
-import 'package:country_info/features/country/presentation/views/widgets/country_detail_item.dart';
+import 'package:country_info/features/country/presentation/views/country_detail/views/detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,35 +31,15 @@ class DetailScreen extends ConsumerWidget {
               : country.basicFields;
           final items = fields.entries.toList();
 
-          return ListView.builder(
-            itemCount: items.length + 1, // +1 for the show more/less button
-            itemBuilder: (context, index) {
-              if (index == items.length) {
-                // Show more/less button
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        ref.read(showMoreProvider.notifier).toggle();
-                      },
-                      child: Text(showMore ? 'Show less' : 'Show more'),
-                    ),
-                  ),
-                );
-              }
-
-              final item = items[index];
-              return CountryDetailItem(label: item.key, value: item.value);
-            },
+          return DetailView(
+            items: items,
+            onExpandToggle: () => ref.read(showMoreProvider.notifier).toggle(),
           );
         },
         loading: () => const LoadingView(),
         error: (error, stackTrace) => ErrorView(
           errorMessage: error.toString(),
-          onRetry: () {
-            ref.invalidate(countryDetailsProvider(countryCode));
-          },
+          onRetry: () => ref.invalidate(countryDetailsProvider(countryCode)),
         ),
       ),
     );
