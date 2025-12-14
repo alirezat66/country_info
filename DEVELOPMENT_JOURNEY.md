@@ -170,3 +170,6 @@ flutter: label: Languages, value: English
 as you can see the first three items rebuild again, you can't stop rebuild even using keys. but it is over engineering here. I will do it in step 4 as extra, but the task is finished here.
 
 let start test development for new page and widgets in next step and merge it with main, then go through complete technical readme and finally go to step 4 (let name it best practice or advanced )
+
+
+I implemented all tests includes patrol integration tests and widget tests.
