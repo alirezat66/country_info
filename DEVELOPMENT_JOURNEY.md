@@ -99,3 +99,14 @@ If you check many of github codes many of them used these approaches:
    - it make code out of structure
 - ✅ I put providers in presentation as it should be
 
+**⏱️ Test Time:** `~15 Minutes`
+
+
+## 🧱 Implement screen list (step 2)
+Of course this steps would be more straight forward since we just need to create a clean folder structure and start to implement, country detail and country list are same feature and based on domain we could not separated these two page together.
+
+I would implement and if I found some critical point then I add and noted it here.
+
+Lets go.
+
+
