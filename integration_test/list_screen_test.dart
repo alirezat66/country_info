@@ -201,4 +201,79 @@ void main() {
     expect(find.text('Germany'), findsOneWidget);
     expect(find.text('Error loading countries'), findsNothing);
   });
+
+  patrolTest(
+    'ListScreen - should navigate to detail page with correct country code',
+    ($) async {
+      // arrange
+      final countries = [
+        const Country(code: 'PT', name: 'Portugal', emoji: '🇵🇹'),
+      ];
+
+      const ptDetails = Country(
+        code: 'PT',
+        name: 'Portugal',
+        emoji: '🇵🇹',
+        capital: 'Lisbon',
+      );
+
+      await $.pumpWidgetAndSettle(
+        ProviderScope(
+          overrides: [
+            countriesProvider.overrideWith((ref) => Future.value(countries)),
+            countryDetailsProvider(
+              'PT',
+            ).overrideWith((ref) => Future.value(ptDetails)),
+          ],
+          child: const MyApp(),
+        ),
+      );
+
+      // act - tap on Portugal
+      await $.tap(find.text('Portugal'));
+      await $.pumpAndSettle();
+
+      // assert - verify correct country details loaded
+      expect(find.text('Code:'), findsOneWidget);
+      expect(find.text('PT'), findsOneWidget);
+      expect(find.text('Lisbon'), findsOneWidget);
+    },
+  );
+
+  patrolTest('ListScreen - should pass country name for Hero animation', (
+    $,
+  ) async {
+    // arrange
+    final countries = [
+      const Country(code: 'SE', name: 'Sweden', emoji: '🇸🇪'),
+    ];
+
+    const seDetails = Country(
+      code: 'SE',
+      name: 'Sweden',
+      emoji: '🇸🇪',
+      capital: 'Stockholm',
+    );
+
+    await $.pumpWidgetAndSettle(
+      ProviderScope(
+        overrides: [
+          countriesProvider.overrideWith((ref) => Future.value(countries)),
+          countryDetailsProvider(
+            'SE',
+          ).overrideWith((ref) => Future.value(seDetails)),
+        ],
+        child: const MyApp(),
+      ),
+    );
+
+    // act - tap on Sweden
+    await $.tap(find.text('Sweden'));
+    await $.pumpAndSettle();
+
+    // assert - Hero widget should be present with country name
+    expect(find.byType(Hero), findsWidgets);
+    expect(find.text('Sweden'), findsWidgets);
+    expect(find.text('Stockholm'), findsOneWidget);
+  });
 }

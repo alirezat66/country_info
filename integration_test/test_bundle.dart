@@ -10,6 +10,7 @@ import 'package:patrol/src/platform/contracts/contracts.dart';
 import 'package:test_api/src/backend/invoker.dart';
 
 // START: GENERATED TEST IMPORTS
+import 'detail_screen_test.dart' as detail_screen_test;
 import 'list_screen_test.dart' as list_screen_test;
 // END: GENERATED TEST IMPORTS
 
@@ -70,6 +71,7 @@ Future<void> main() async {
   });
 
   // START: GENERATED TEST GROUPS
+  group('detail_screen_test', detail_screen_test.main);
   group('list_screen_test', list_screen_test.main);
   // END: GENERATED TEST GROUPS
 
