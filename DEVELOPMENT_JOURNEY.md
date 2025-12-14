@@ -42,9 +42,20 @@ So for this project, Clean Arch it was — and not the over-engineered kind. Jus
   Every team handles this differently. I separated concerns — used `freezed` in the data layer and `equitable` for domain since we have no logic there. Why? Because **models are models** and **entities are entities**. and both of them are **immutable**, but somewhere that we need compare, and checking unions and etc like states I used **freezed**
 - **Riverpod vs generator**:  
   For using riverpod I have two reason, first, generally I am not big fan of using code generators, I had experience in large projects it took a lot time to just generate all classes for small changes. Secondly, I want to review all riverpod one more time during development.
+  
+  in core layout we would define : network, routing, error handling, consts and views.
+
+  for now, I knew something:
+    - we have some consts => `queries` and `values`
+    - we have an error handling system, usually I used same approach for most projects, so we have `app_exception` and `Failure`
+    - we have an app_router and (we usually have an route observer but since we have no analytics in this project we can skip it)
+    - we have a graphql client
+    - we have result and usecase
+  *“It is important to me that core use same folder structure with other part of app, so we would keep data-domain-presentation folder structure.”*
+
 
   So lets go to Start.
 
 
+**⏱️ Time Spent For adding packages:** `1 Minutes`
 
-**⏱️ Time Spent:** `33m 39s`
