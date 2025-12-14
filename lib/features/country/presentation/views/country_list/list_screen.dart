@@ -13,13 +13,13 @@ class ListScreen extends ConsumerWidget {
     final countriesAsync = ref.watch(countriesProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Countries')),
+      appBar: AppBar(title: const Text('Countries'), centerTitle: false),
       body: countriesAsync.when(
         data: (countries) {
           return CountryLoadedView(
             countries: countries,
-            onCountrySelected: (code, name) =>()
-             //todo go to detail screen
+            onCountrySelected: (code, name) => (),
+            //todo go to detail screen
           );
         },
         loading: () => const LoadingView(),

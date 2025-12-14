@@ -1,3 +1,4 @@
+import 'package:country_info/core/presentation/widgets/hero_text.dart';
 import 'package:flutter/material.dart';
 
 /// Widget for displaying a country in the list
@@ -19,7 +20,7 @@ class CountryListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Text(flag, style: const TextStyle(fontSize: 32)),
-      title: Text(name),
+      title: HeroText(tag: 'name_$countryCode', text: name),
       trailing: const Icon(Icons.chevron_right),
       onTap: onTap,
     );
