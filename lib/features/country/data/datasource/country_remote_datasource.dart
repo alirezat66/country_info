@@ -24,4 +24,14 @@ class CountryRemoteDataSourceImpl
       ),
     );
   }
+
+  @override
+  Future<CountryModel> getCountryDetails(String code) async {
+    return await safeQuery(
+      call: client.query(query: ConstQueries.getCountryDetailsQuery(code)),
+      requiredKeys: ['country'],
+      mapper: (data) =>
+          CountryModel.fromJson(data['country'] as Map<String, dynamic>),
+    );
+  }
 }

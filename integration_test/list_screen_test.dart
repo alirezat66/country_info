@@ -14,7 +14,7 @@ import 'package:patrol/patrol.dart';
 
 @GenerateMocks([GetCountries])
 void main() {
-   patrolTest(
+  patrolTest(
     'ListScreen - should display countries list when data loads successfully',
     ($) async {
       // arrange

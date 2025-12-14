@@ -22,4 +22,15 @@ class CountryRepositoryImpl implements CountryRepository {
       return Result.failure(ServerFailure('Unexpected error: ${e.toString()}'));
     }
   }
+   @override
+  Future<Result<Country>> getCountryDetails(String code) async {
+    try {
+      final countryModel = await remoteDataSource.getCountryDetails(code);
+      return Result.success(countryModel.toEntity());
+    } on ServerException catch (e) {
+      return Result.failure(ServerFailure(e.message));
+    } catch (e) {
+      return Result.failure(ServerFailure('Unexpected error: ${e.toString()}'));
+    }
+  }
 }

@@ -8,3 +8,11 @@ final countriesProvider = FutureProvider<List<Country>>((ref) async {
   return result.fold((failure) => throw failure, (countries) => countries);
 });
 
+final countryDetailsProvider = FutureProvider.family<Country, String>((
+  ref,
+  code,
+) async {
+  final getCountryDetails = ref.watch(getCountryDetailsProvider);
+  final result = await getCountryDetails(code);
+  return result.fold((failure) => throw failure, (country) => country);
+});
