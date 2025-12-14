@@ -110,4 +110,15 @@ I would implement and if I found some critical point then I add and noted it her
 Lets go.
 
 
-I started 
+I started with datasource and domain and then I had to change something in core too. 
+First of all I Saw implementation of client.query so bad, cause I had to put a lot of if, else condition cause of result nature of query result, second most of time we have data and we should be sure that it is not empty and it is contain specific keys. 
+So I created two class first as extension on QueryResult and second as a Mixin since we always need a safeQuery in a project with graphql. 
+
+  *“It can count as over engineering in a small project, but I can say it is prevent to do more than 1 time, so I go trough DRY instead of Wet Principal.”*
+
+  I also implemented providers in presentation.
+
+  then next step would be implement ui part, but so lets go implement ui.
+
+  
+
