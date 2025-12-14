@@ -1,0 +1,328 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'country_model.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+// dart format off
+T _$identity<T>(T value) => value;
+
+/// @nodoc
+mixin _$CountryModel {
+
+ String get code; String get name; String get emoji; String? get capital; String? get currency; String? get phone; ContinentModel? get continent; List<LanguageModel> get languages;
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CountryModelCopyWith<CountryModel> get copyWith => _$CountryModelCopyWithImpl<CountryModel>(this as CountryModel, _$identity);
+
+  /// Serializes this CountryModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.capital, capital) || other.capital == capital)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.continent, continent) || other.continent == continent)&&const DeepCollectionEquality().equals(other.languages, languages));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,code,name,emoji,capital,currency,phone,continent,const DeepCollectionEquality().hash(languages));
+
+@override
+String toString() {
+  return 'CountryModel(code: $code, name: $name, emoji: $emoji, capital: $capital, currency: $currency, phone: $phone, continent: $continent, languages: $languages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CountryModelCopyWith<$Res>  {
+  factory $CountryModelCopyWith(CountryModel value, $Res Function(CountryModel) _then) = _$CountryModelCopyWithImpl;
+@useResult
+$Res call({
+ String code, String name, String emoji, String? capital, String? currency, String? phone, ContinentModel? continent, List<LanguageModel> languages
+});
+
+
+$ContinentModelCopyWith<$Res>? get continent;
+
+}
+/// @nodoc
+class _$CountryModelCopyWithImpl<$Res>
+    implements $CountryModelCopyWith<$Res> {
+  _$CountryModelCopyWithImpl(this._self, this._then);
+
+  final CountryModel _self;
+  final $Res Function(CountryModel) _then;
+
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? name = null,Object? emoji = null,Object? capital = freezed,Object? currency = freezed,Object? phone = freezed,Object? continent = freezed,Object? languages = null,}) {
+  return _then(_self.copyWith(
+code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
+as String,capital: freezed == capital ? _self.capital : capital // ignore: cast_nullable_to_non_nullable
+as String?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,continent: freezed == continent ? _self.continent : continent // ignore: cast_nullable_to_non_nullable
+as ContinentModel?,languages: null == languages ? _self.languages : languages // ignore: cast_nullable_to_non_nullable
+as List<LanguageModel>,
+  ));
+}
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinentModelCopyWith<$Res>? get continent {
+    if (_self.continent == null) {
+    return null;
+  }
+
+  return $ContinentModelCopyWith<$Res>(_self.continent!, (value) {
+    return _then(_self.copyWith(continent: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [CountryModel].
+extension CountryModelPatterns on CountryModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CountryModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CountryModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CountryModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _CountryModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CountryModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CountryModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CountryModel() when $default != null:
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)  $default,) {final _that = this;
+switch (_that) {
+case _CountryModel():
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)?  $default,) {final _that = this;
+switch (_that) {
+case _CountryModel() when $default != null:
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _CountryModel extends CountryModel {
+  const _CountryModel({required this.code, required this.name, required this.emoji, this.capital, this.currency, this.phone, this.continent, final  List<LanguageModel> languages = const []}): _languages = languages,super._();
+  factory _CountryModel.fromJson(Map<String, dynamic> json) => _$CountryModelFromJson(json);
+
+@override final  String code;
+@override final  String name;
+@override final  String emoji;
+@override final  String? capital;
+@override final  String? currency;
+@override final  String? phone;
+@override final  ContinentModel? continent;
+ final  List<LanguageModel> _languages;
+@override@JsonKey() List<LanguageModel> get languages {
+  if (_languages is EqualUnmodifiableListView) return _languages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_languages);
+}
+
+
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CountryModelCopyWith<_CountryModel> get copyWith => __$CountryModelCopyWithImpl<_CountryModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CountryModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.capital, capital) || other.capital == capital)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.continent, continent) || other.continent == continent)&&const DeepCollectionEquality().equals(other._languages, _languages));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,code,name,emoji,capital,currency,phone,continent,const DeepCollectionEquality().hash(_languages));
+
+@override
+String toString() {
+  return 'CountryModel(code: $code, name: $name, emoji: $emoji, capital: $capital, currency: $currency, phone: $phone, continent: $continent, languages: $languages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CountryModelCopyWith<$Res> implements $CountryModelCopyWith<$Res> {
+  factory _$CountryModelCopyWith(_CountryModel value, $Res Function(_CountryModel) _then) = __$CountryModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String code, String name, String emoji, String? capital, String? currency, String? phone, ContinentModel? continent, List<LanguageModel> languages
+});
+
+
+@override $ContinentModelCopyWith<$Res>? get continent;
+
+}
+/// @nodoc
+class __$CountryModelCopyWithImpl<$Res>
+    implements _$CountryModelCopyWith<$Res> {
+  __$CountryModelCopyWithImpl(this._self, this._then);
+
+  final _CountryModel _self;
+  final $Res Function(_CountryModel) _then;
+
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? code = null,Object? name = null,Object? emoji = null,Object? capital = freezed,Object? currency = freezed,Object? phone = freezed,Object? continent = freezed,Object? languages = null,}) {
+  return _then(_CountryModel(
+code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
+as String,capital: freezed == capital ? _self.capital : capital // ignore: cast_nullable_to_non_nullable
+as String?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,continent: freezed == continent ? _self.continent : continent // ignore: cast_nullable_to_non_nullable
+as ContinentModel?,languages: null == languages ? _self._languages : languages // ignore: cast_nullable_to_non_nullable
+as List<LanguageModel>,
+  ));
+}
+
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinentModelCopyWith<$Res>? get continent {
+    if (_self.continent == null) {
+    return null;
+  }
+
+  return $ContinentModelCopyWith<$Res>(_self.continent!, (value) {
+    return _then(_self.copyWith(continent: value));
+  });
+}
+}
+
+// dart format on

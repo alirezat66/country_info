@@ -1,16 +1,11 @@
-# country_info
+# Country Info - Flutter Mobile Application
 
-A new Flutter project.
+## 🚀 Project Overview
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+**Country Info** is a simple Flutter mobile application designed to provide list of all countries and some info about each country. The goal of this project is implementing clean architecture using riverpod, graphql and go-router together.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📚 My Development Journey (Very Very Important)
+This document focuses on the technical implementation, architecture, and code decision making process, so if firstly I do something and then change my decision it would represented in this document, why? I want develop document to walk trough the code reviewer in this journey, so the reviewer could know me more.
+If you're interested in understanding my personal development journey, the challenges I faced, time management, and my decision-making process throughout this project, please refer to:
+**[My Development Journey](DEVELOPMENT_JOURNEY.md)**
