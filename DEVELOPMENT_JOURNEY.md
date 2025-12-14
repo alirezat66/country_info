@@ -128,5 +128,14 @@ In this step I added screen/views/widgets as you can see I implemented view part
 
 I used ai for generating some tests and also review them to be sure all aspects checked. 
 
+**⏱️ Integration Test Time:** `~75 Minutes` 
+Configuration and developing test took time cause I could not add test to riverpod and it takes time to learn how I should mock data there.
 
+
+
+## 🧱 Implement detail screen (step 4)
+when user clicks on an Items we should go to the next page and see detail page, 
+In detail page we should see first a part of data and with a expand button we should load other data.
+
+lets go to implement it.
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CountryModel {
 
- String get code; String get name; String get emoji;
+ String get code; String get name; String get emoji; String? get capital; String? get currency; String? get phone; ContinentModel? get continent; List<LanguageModel> get languages;
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CountryModelCopyWith<CountryModel> get copyWith => _$CountryModelCopyWithImpl<C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.capital, capital) || other.capital == capital)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.continent, continent) || other.continent == continent)&&const DeepCollectionEquality().equals(other.languages, languages));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,name,emoji);
+int get hashCode => Object.hash(runtimeType,code,name,emoji,capital,currency,phone,continent,const DeepCollectionEquality().hash(languages));
 
 @override
 String toString() {
-  return 'CountryModel(code: $code, name: $name, emoji: $emoji)';
+  return 'CountryModel(code: $code, name: $name, emoji: $emoji, capital: $capital, currency: $currency, phone: $phone, continent: $continent, languages: $languages)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $CountryModelCopyWith<$Res>  {
   factory $CountryModelCopyWith(CountryModel value, $Res Function(CountryModel) _then) = _$CountryModelCopyWithImpl;
 @useResult
 $Res call({
- String code, String name, String emoji
+ String code, String name, String emoji, String? capital, String? currency, String? phone, ContinentModel? continent, List<LanguageModel> languages
 });
 
 
-
+$ContinentModelCopyWith<$Res>? get continent;
 
 }
 /// @nodoc
@@ -65,15 +65,32 @@ class _$CountryModelCopyWithImpl<$Res>
 
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? name = null,Object? emoji = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? name = null,Object? emoji = null,Object? capital = freezed,Object? currency = freezed,Object? phone = freezed,Object? continent = freezed,Object? languages = null,}) {
   return _then(_self.copyWith(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
-as String,
+as String,capital: freezed == capital ? _self.capital : capital // ignore: cast_nullable_to_non_nullable
+as String?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,continent: freezed == continent ? _self.continent : continent // ignore: cast_nullable_to_non_nullable
+as ContinentModel?,languages: null == languages ? _self.languages : languages // ignore: cast_nullable_to_non_nullable
+as List<LanguageModel>,
   ));
 }
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinentModelCopyWith<$Res>? get continent {
+    if (_self.continent == null) {
+    return null;
+  }
 
+  return $ContinentModelCopyWith<$Res>(_self.continent!, (value) {
+    return _then(_self.copyWith(continent: value));
+  });
+}
 }
 
 
@@ -155,10 +172,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String code,  String name,  String emoji)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CountryModel() when $default != null:
-return $default(_that.code,_that.name,_that.emoji);case _:
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
   return orElse();
 
 }
@@ -176,10 +193,10 @@ return $default(_that.code,_that.name,_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String code,  String name,  String emoji)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)  $default,) {final _that = this;
 switch (_that) {
 case _CountryModel():
-return $default(_that.code,_that.name,_that.emoji);case _:
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +213,10 @@ return $default(_that.code,_that.name,_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String code,  String name,  String emoji)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String code,  String name,  String emoji,  String? capital,  String? currency,  String? phone,  ContinentModel? continent,  List<LanguageModel> languages)?  $default,) {final _that = this;
 switch (_that) {
 case _CountryModel() when $default != null:
-return $default(_that.code,_that.name,_that.emoji);case _:
+return $default(_that.code,_that.name,_that.emoji,_that.capital,_that.currency,_that.phone,_that.continent,_that.languages);case _:
   return null;
 
 }
@@ -211,12 +228,23 @@ return $default(_that.code,_that.name,_that.emoji);case _:
 @JsonSerializable()
 
 class _CountryModel extends CountryModel {
-  const _CountryModel({required this.code, required this.name, required this.emoji}): super._();
+  const _CountryModel({required this.code, required this.name, required this.emoji, this.capital, this.currency, this.phone, this.continent, final  List<LanguageModel> languages = const []}): _languages = languages,super._();
   factory _CountryModel.fromJson(Map<String, dynamic> json) => _$CountryModelFromJson(json);
 
 @override final  String code;
 @override final  String name;
 @override final  String emoji;
+@override final  String? capital;
+@override final  String? currency;
+@override final  String? phone;
+@override final  ContinentModel? continent;
+ final  List<LanguageModel> _languages;
+@override@JsonKey() List<LanguageModel> get languages {
+  if (_languages is EqualUnmodifiableListView) return _languages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_languages);
+}
+
 
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +259,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CountryModel&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.capital, capital) || other.capital == capital)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.continent, continent) || other.continent == continent)&&const DeepCollectionEquality().equals(other._languages, _languages));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,name,emoji);
+int get hashCode => Object.hash(runtimeType,code,name,emoji,capital,currency,phone,continent,const DeepCollectionEquality().hash(_languages));
 
 @override
 String toString() {
-  return 'CountryModel(code: $code, name: $name, emoji: $emoji)';
+  return 'CountryModel(code: $code, name: $name, emoji: $emoji, capital: $capital, currency: $currency, phone: $phone, continent: $continent, languages: $languages)';
 }
 
 
@@ -251,11 +279,11 @@ abstract mixin class _$CountryModelCopyWith<$Res> implements $CountryModelCopyWi
   factory _$CountryModelCopyWith(_CountryModel value, $Res Function(_CountryModel) _then) = __$CountryModelCopyWithImpl;
 @override @useResult
 $Res call({
- String code, String name, String emoji
+ String code, String name, String emoji, String? capital, String? currency, String? phone, ContinentModel? continent, List<LanguageModel> languages
 });
 
 
-
+@override $ContinentModelCopyWith<$Res>? get continent;
 
 }
 /// @nodoc
@@ -268,16 +296,33 @@ class __$CountryModelCopyWithImpl<$Res>
 
 /// Create a copy of CountryModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? code = null,Object? name = null,Object? emoji = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? code = null,Object? name = null,Object? emoji = null,Object? capital = freezed,Object? currency = freezed,Object? phone = freezed,Object? continent = freezed,Object? languages = null,}) {
   return _then(_CountryModel(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
-as String,
+as String,capital: freezed == capital ? _self.capital : capital // ignore: cast_nullable_to_non_nullable
+as String?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,continent: freezed == continent ? _self.continent : continent // ignore: cast_nullable_to_non_nullable
+as ContinentModel?,languages: null == languages ? _self._languages : languages // ignore: cast_nullable_to_non_nullable
+as List<LanguageModel>,
   ));
 }
 
+/// Create a copy of CountryModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinentModelCopyWith<$Res>? get continent {
+    if (_self.continent == null) {
+    return null;
+  }
 
+  return $ContinentModelCopyWith<$Res>(_self.continent!, (value) {
+    return _then(_self.copyWith(continent: value));
+  });
+}
 }
 
 // dart format on
