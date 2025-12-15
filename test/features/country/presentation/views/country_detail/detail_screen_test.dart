@@ -7,7 +7,7 @@ import 'package:country_info/features/country/domain/entities/continent.dart';
 import 'package:country_info/features/country/domain/entities/country.dart';
 import 'package:country_info/features/country/domain/entities/language.dart';
 import 'package:country_info/features/country/presentation/providers/country_providers.dart';
-import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
+import 'package:country_info/features/country/presentation/providers/show_more_notifier.dart';
 import 'package:country_info/features/country/presentation/views/country_detail/detail_screen.dart';
 import 'package:country_info/features/country/presentation/views/country_detail/views/detail_view.dart';
 import 'package:flutter/material.dart';

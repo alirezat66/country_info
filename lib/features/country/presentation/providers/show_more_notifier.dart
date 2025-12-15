@@ -1,6 +1,9 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class ShowMoreNotifier extends Notifier<bool> {
+part 'show_more_notifier.g.dart';
+
+@riverpod
+class ShowMore extends _$ShowMore {
   @override
   bool build() => false;
 

@@ -7,7 +7,6 @@ class DetailBasicSliverView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('🔵 DetailBasicSliverView build called');
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
         final item = basicItems.entries.toList()[index];

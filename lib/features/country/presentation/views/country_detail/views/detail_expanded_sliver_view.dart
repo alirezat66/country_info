@@ -1,6 +1,6 @@
 import 'package:country_info/features/country/domain/entities/country.dart';
 import 'package:country_info/features/country/domain/entities/country_mapper_ext.dart';
-import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
+import 'package:country_info/features/country/presentation/providers/show_more_notifier.dart';
 import 'package:country_info/features/country/presentation/views/widgets/country_detail_item.dart';
 import 'package:country_info/features/country/presentation/views/widgets/more_button.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class DetailExpandedSliverView extends StatelessWidget {
   final Country country;
   final VoidCallback onExpandToggle;
-  const DetailExpandedSliverView({super.key, required this.country, required this.onExpandToggle});
+  const DetailExpandedSliverView({
+    super.key,
+    required this.country,
+    required this.onExpandToggle,
+  });
 
   @override
   Widget build(BuildContext context) {

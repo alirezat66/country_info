@@ -1,4 +1,4 @@
-import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
+import 'package:country_info/features/country/presentation/providers/show_more_notifier.dart';
 import 'package:country_info/features/country/presentation/views/country_detail/views/detail_view.dart';
 import 'package:country_info/features/country/presentation/views/widgets/country_detail_item.dart';
 import 'package:flutter/material.dart';

@@ -9,6 +9,7 @@ extension CountryMapperExt on Country {
   };
 
   Map<String, String> get extendedFields => {
+    ...basicFields,
     'Currency': currency ?? 'NA',
     'Phone': phone ?? 'AN',
     'Continent Code': continent?.code ?? 'NA',

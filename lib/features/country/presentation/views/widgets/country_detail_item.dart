@@ -15,7 +15,6 @@ class CountryDetailItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('label: $label, value: $value');
     return Padding(
       padding: padding,
       child: Row(

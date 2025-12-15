@@ -1,7 +1,10 @@
 import 'package:country_info/core/data/consts/const_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql/client.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final graphqlClientProvider = Provider<GraphQLClient>((ref) {
+part 'graphql_client_provider.g.dart';
+
+@riverpod
+GraphQLClient graphqlClient(Ref ref) {
   return GraphQLClient(link: HttpLink(graphqlEndpoint), cache: GraphQLCache());
-});
+}
