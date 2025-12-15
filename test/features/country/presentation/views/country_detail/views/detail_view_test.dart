@@ -1,3 +1,4 @@
+import 'package:country_info/features/country/domain/entities/country.dart';
 import 'package:country_info/features/country/presentation/providers/show_more_notifier.dart';
 import 'package:country_info/features/country/presentation/views/country_detail/views/detail_view.dart';
 import 'package:country_info/features/country/presentation/views/widgets/country_detail_item.dart';
@@ -7,72 +8,73 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('DetailView', () {
-    testWidgets('should render ListView with correct item count', (
-      tester,
-    ) async {
+    testWidgets('should render CustomScrollView with slivers', (tester) async {
       // arrange
-      final items = [
-        const MapEntry('Flag', '🇺🇸'),
-        const MapEntry('Name', 'United States'),
-        const MapEntry('Code', 'US'),
-      ];
+      const country = Country(code: 'US', name: 'United States', emoji: '🇺🇸');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
       // assert
-      final listView = tester.widget<ListView>(find.byType(ListView));
-      expect(listView.semanticChildCount, 4); // 3 items + 1 button
+      expect(find.byType(CustomScrollView), findsOneWidget);
+      expect(
+        find.byType(CountryDetailItem),
+        findsNWidgets(4),
+      ); // 4 basic fields
     });
 
-    testWidgets('should render CountryDetailItem for each entry', (
+    testWidgets('should render CountryDetailItem for each field', (
       tester,
     ) async {
       // arrange
-      final items = [
-        const MapEntry('Capital', 'Washington, D.C.'),
-        const MapEntry('Currency', 'USD'),
-      ];
+      const country = Country(
+        code: 'US',
+        name: 'United States',
+        emoji: '🇺🇸',
+        capital: 'Washington, D.C.',
+        currency: 'USD',
+      );
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
       // assert
-      expect(find.byType(CountryDetailItem), findsNWidgets(2));
+      expect(
+        find.byType(CountryDetailItem),
+        findsNWidgets(4),
+      ); // 4 basic fields
       expect(find.text('Capital:'), findsOneWidget);
       expect(find.text('Washington, D.C.'), findsOneWidget);
-      expect(find.text('Currency:'), findsOneWidget);
-      expect(find.text('USD'), findsOneWidget);
     });
 
     testWidgets('should display "Show more" button when showMore is false', (
       tester,
     ) async {
       // arrange
-      final items = [const MapEntry('Name', 'France')];
+      const country = Country(code: 'FR', name: 'France', emoji: '🇫🇷');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
@@ -89,7 +91,7 @@ void main() {
       // arrange
       final container = ProviderContainer();
 
-      final items = [const MapEntry('Name', 'Germany')];
+      const country = Country(code: 'DE', name: 'Germany', emoji: '🇩🇪');
 
       // Set showMore to true before building
       container.read(showMoreProvider.notifier).toggle();
@@ -100,7 +102,7 @@ void main() {
           container: container,
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
@@ -121,7 +123,7 @@ void main() {
     ) async {
       // arrange
       bool callbackCalled = false;
-      final items = [const MapEntry('Code', 'CA')];
+      const country = Country(code: 'CA', name: 'Canada', emoji: '🇨🇦');
 
       // act
       await tester.pumpWidget(
@@ -129,7 +131,7 @@ void main() {
           child: MaterialApp(
             home: Scaffold(
               body: DetailView(
-                items: items,
+                country: country,
                 onExpandToggle: () => callbackCalled = true,
               ),
             ),
@@ -144,68 +146,70 @@ void main() {
       expect(callbackCalled, true);
     });
 
-    testWidgets('should show only button when items list is empty', (
-      tester,
-    ) async {
+    testWidgets('should show basic fields and button', (tester) async {
       // arrange
-      final items = <MapEntry<String, String>>[];
+      const country = Country(code: 'XX', name: 'Test', emoji: '🏳️');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
       // assert
-      expect(find.byType(CountryDetailItem), findsNothing);
+      expect(
+        find.byType(CountryDetailItem),
+        findsNWidgets(4),
+      ); // 4 basic fields
       expect(find.byType(ElevatedButton), findsOneWidget);
     });
 
-    testWidgets('should render multiple items correctly', (tester) async {
+    testWidgets('should render all basic fields correctly', (tester) async {
       // arrange
-      final items = [
-        const MapEntry('Flag', '🇬🇧'),
-        const MapEntry('Name', 'United Kingdom'),
-        const MapEntry('Code', 'GB'),
-        const MapEntry('Capital', 'London'),
-        const MapEntry('Currency', 'GBP'),
-      ];
+      const country = Country(
+        code: 'GB',
+        name: 'United Kingdom',
+        emoji: '🇬🇧',
+        capital: 'London',
+      );
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
       // assert
-      expect(find.byType(CountryDetailItem), findsNWidgets(5));
+      expect(
+        find.byType(CountryDetailItem),
+        findsNWidgets(4),
+      ); // 4 basic fields
       expect(find.text('Flag:'), findsOneWidget);
       expect(find.text('Name:'), findsOneWidget);
       expect(find.text('Code:'), findsOneWidget);
       expect(find.text('Capital:'), findsOneWidget);
-      expect(find.text('Currency:'), findsOneWidget);
     });
 
     testWidgets('should have button centered with padding', (tester) async {
       // arrange
-      final items = [const MapEntry('Test', 'Value')];
+      const country = Country(code: 'XX', name: 'Test', emoji: '🏳️');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
@@ -225,45 +229,50 @@ void main() {
       expect(padding, findsOneWidget);
     });
 
-    testWidgets('should maintain item order', (tester) async {
+    testWidgets('should maintain field order', (tester) async {
       // arrange
-      final items = [
-        const MapEntry('First', 'A'),
-        const MapEntry('Second', 'B'),
-        const MapEntry('Third', 'C'),
-      ];
+      const country = Country(
+        code: 'IT',
+        name: 'Italy',
+        emoji: '🇮🇹',
+        capital: 'Rome',
+      );
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
-      // assert
+      // assert - basic fields should be in order: Flag, Name, Code, Capital
       final detailItems = tester
           .widgetList<CountryDetailItem>(find.byType(CountryDetailItem))
           .toList();
-      expect(detailItems[0].label, 'First');
-      expect(detailItems[1].label, 'Second');
-      expect(detailItems[2].label, 'Third');
+      expect(detailItems[0].label, 'Flag');
+      expect(detailItems[1].label, 'Name');
+      expect(detailItems[2].label, 'Code');
+      expect(detailItems[3].label, 'Capital');
     });
 
     testWidgets('should handle button tap multiple times', (tester) async {
       // arrange
       int tapCount = 0;
-      final items = [const MapEntry('Name', 'Italy')];
+      const country = Country(code: 'IT', name: 'Italy', emoji: '🇮🇹');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () => tapCount++),
+              body: DetailView(
+                country: country,
+                onExpandToggle: () => tapCount++,
+              ),
             ),
           ),
         ),
@@ -280,38 +289,42 @@ void main() {
       expect(tapCount, 3);
     });
 
-    testWidgets('should use ListView.builder', (tester) async {
+    testWidgets('should use CustomScrollView with slivers', (tester) async {
       // arrange
-      final items = [const MapEntry('Test', 'Value')];
+      const country = Country(code: 'XX', name: 'Test', emoji: '🏳️');
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
       // assert
-      expect(find.byType(ListView), findsOneWidget);
+      expect(find.byType(CustomScrollView), findsOneWidget);
     });
 
-    testWidgets('should handle items with special characters', (tester) async {
+    testWidgets('should handle country names with special characters', (
+      tester,
+    ) async {
       // arrange
-      final items = [
-        const MapEntry('Native', 'Français'),
-        const MapEntry('Arabic', 'العربية'),
-      ];
+      const country = Country(
+        code: 'FR',
+        name: 'Français',
+        emoji: '🇫🇷',
+        capital: 'العربية',
+      );
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
@@ -322,26 +335,31 @@ void main() {
       expect(find.text('العربية'), findsOneWidget);
     });
 
-    testWidgets('should render button as last item', (tester) async {
+    testWidgets('should render button after all fields', (tester) async {
       // arrange
-      final items = [
-        const MapEntry('First', 'A'),
-        const MapEntry('Second', 'B'),
-      ];
+      const country = Country(
+        code: 'ES',
+        name: 'Spain',
+        emoji: '🇪🇸',
+        capital: 'Madrid',
+      );
 
       // act
       await tester.pumpWidget(
         ProviderScope(
           child: MaterialApp(
             home: Scaffold(
-              body: DetailView(items: items, onExpandToggle: () {}),
+              body: DetailView(country: country, onExpandToggle: () {}),
             ),
           ),
         ),
       );
 
-      // assert - button should be after all items
-      expect(find.byType(CountryDetailItem), findsNWidgets(2));
+      // assert - button should be after all basic fields
+      expect(
+        find.byType(CountryDetailItem),
+        findsNWidgets(4),
+      ); // 4 basic fields
       expect(find.byType(ElevatedButton), findsOneWidget);
     });
   });
