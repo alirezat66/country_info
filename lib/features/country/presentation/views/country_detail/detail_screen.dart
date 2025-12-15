@@ -1,7 +1,6 @@
 import 'package:country_info/core/presentation/views/error_view.dart';
 import 'package:country_info/core/presentation/views/loading_view.dart';
 import 'package:country_info/core/presentation/widgets/hero_text.dart';
-import 'package:country_info/features/country/domain/entities/country_mapper_ext.dart';
 import 'package:country_info/features/country/presentation/providers/country_providers.dart';
 import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
 import 'package:country_info/features/country/presentation/views/country_detail/views/detail_view.dart';
@@ -18,7 +17,6 @@ class DetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final countryAsync = ref.watch(countryDetailsProvider(countryCode));
-    final showMore = ref.watch(showMoreProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -26,13 +24,8 @@ class DetailScreen extends ConsumerWidget {
       ),
       body: countryAsync.when(
         data: (country) {
-          final fields = showMore
-              ? country.extendedFields
-              : country.basicFields;
-          final items = fields.entries.toList();
-
           return DetailView(
-            items: items,
+            country: country,
             onExpandToggle: () => ref.read(showMoreProvider.notifier).toggle(),
           );
         },

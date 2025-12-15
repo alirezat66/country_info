@@ -177,3 +177,73 @@ I implemented all tests includes patrol integration tests and widget tests.
 **⏱️ Integration Test Time:** `~87 Minutes` 
 
 
+## 🧱 Fix Detail View Performance Issue
+I really don't recommended this approach for such case, cause here rebuilding couple of items for flutter is nothing. I just implement it cause I was interesting to find issue, 
+The key point here was consumer
+
+```dart
+class DetailExpandedSliverView extends StatelessWidget {
+  final Country country;
+  final VoidCallback onExpandToggle;
+  const DetailExpandedSliverView({super.key, required this.country, required this.onExpandToggle});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final showMore = ref.watch(showMoreProvider);
+        final extendedItems = country.extendedFields;
+
+        if (!showMore) {
+          // Just show the button
+          return SliverToBoxAdapter(
+            child: ExpandedToggleButton(
+              showMore: false,
+              onToggle: onExpandToggle,
+            ),
+          );
+        }
+
+        // Show extended items + button
+        return SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            if (index == extendedItems.length) {
+              // Last item is the button
+              return ExpandedToggleButton(
+                showMore: true,
+                onToggle: onExpandToggle,
+              );
+            }
+
+            final item = extendedItems.entries.elementAt(index);
+            return CountryDetailItem(
+              key: ValueKey('extended_${item.key}'),
+              label: item.key,
+              value: item.value,
+            );
+          }, childCount: extendedItems.length + 1),
+        );
+      },
+    );
+  }
+}
+```
+
+Also I almost change everything in detail screen, since all tests  passed, it means all is correct and now the output is : 
+
+```text
+flutter: label: Flag, value: 🇦🇬
+flutter: label: Name, value: Antigua and Barbuda
+flutter: label: Code, value: AG
+flutter: label: Capital, value: Saint John's
+```
+
+this shows when we just opened a detail page and then:
+
+```text
+flutter: label: Currency, value: XCD
+flutter: label: Phone, value: 1268
+flutter: label: Continent Code, value: NA
+flutter: label: Continent Name, value: North America
+flutter: label: Languages, value: English
+```

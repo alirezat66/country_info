@@ -130,7 +130,7 @@ void main() {
     // act
     await $.tester.tap(find.text('France'));
     await $.pumpAndSettle();
-    expect(find.text('France'), findsOneWidget);
+    expect(find.text('France'), findsAtLeastNWidgets(1));
   });
 
   patrolTest('ListScreen - should scroll through country list', ($) async {

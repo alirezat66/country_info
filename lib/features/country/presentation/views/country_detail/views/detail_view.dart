@@ -1,40 +1,35 @@
-import 'package:country_info/features/country/presentation/providers/show_more_provider.dart';
-import 'package:country_info/features/country/presentation/views/widgets/country_detail_item.dart';
+import 'package:country_info/features/country/domain/entities/country.dart';
+import 'package:country_info/features/country/domain/entities/country_mapper_ext.dart';
+import 'package:country_info/features/country/presentation/views/country_detail/views/detail_basic_sliver_view.dart';
+import 'package:country_info/features/country/presentation/views/country_detail/views/detail_expanded_sliver_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DetailView extends ConsumerWidget {
+class DetailView extends StatelessWidget {
+  final Country country;
+  final VoidCallback onExpandToggle;
+
   const DetailView({
     super.key,
-    required this.items,
+    required this.country,
     required this.onExpandToggle,
   });
 
-  final List<MapEntry<String, String>> items;
-  final VoidCallback onExpandToggle;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ListView.builder(
-      itemCount: items.length + 1, // +1 for the show more/less button
-      itemBuilder: (context, index) {
-        if (index == items.length) {
-          // Show more/less button
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: ()  => onExpandToggle(),
-                child: Text(
-                  ref.watch(showMoreProvider) ? 'Show less' : 'Show more',
-                ),
-              ),
-            ),
-          );
-        }
+  Widget build(BuildContext context) {
+    // Basic items - calculated once, never rebuilds
+    final basicItems = country.basicFields;
 
-        final item = items[index];
-        return CountryDetailItem(label: item.key, value: item.value);
-      },
+    return CustomScrollView(
+      slivers: [
+        // This part NEVER rebuilds when showMore changes
+        DetailBasicSliverView(basicItems: basicItems),
+
+        // Only this Consumer rebuilds when showMore changes
+        DetailExpandedSliverView(
+          country: country,
+          onExpandToggle: onExpandToggle,
+        ),
+      ],
     );
   }
 }
